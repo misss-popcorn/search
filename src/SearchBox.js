@@ -26,7 +26,7 @@ const Autocomplete = ({handleOnChange, searchResults, inputValue}) => {
                     setFocus(0);
                 
             } else {
-                if(focus < searchResults.length) {
+                if(focus < searchResults.length-1) {
                     setFocus(focus+1);
                     itemsRef.current[focus+1].focus();
                 }
@@ -34,7 +34,10 @@ const Autocomplete = ({handleOnChange, searchResults, inputValue}) => {
             }
             
         } else if(e.keyCode === 38) {
-            if(focus !== null && focus !== 0) {
+            if(focus === 0) {
+                inputRef.current.focus();
+                setFocus(null);
+            } else if(focus !== null) {
                 setFocus(focus-1);
                 itemsRef.current[focus-1].focus();
             }
@@ -77,12 +80,12 @@ const Autocomplete = ({handleOnChange, searchResults, inputValue}) => {
                             className="option-item" key={i}
                             onClick={()=>handleOnChange({target: {value: searchResults[i].name}})}
                         >
-                            <br></br>
+                            
                             <strong>{result.id}</strong>
-                            <br></br>
+                           
                             <i>{Parser(renderHighlighted(result.name))}</i>
-                            <br></br>
-                            <p className="address">{Parser(renderHighlighted(result.address))}</p>
+                            
+                            <p className="address"><span>{Parser(renderHighlighted(result.address))}</span>, <span>{Parser(renderHighlighted(result.pincode))}</span></p>
                         </div>
                     )
                 }) )

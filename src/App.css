@@ -42,15 +42,21 @@
 }
 
 .option-item:focus {
-  font-size: 12px;
   outline: none;
   background-color: #FFFEDC;
 }
 
 .address{
+  font-size: 12px;
   color: #606060;
 }
 
 b{
   color: #78A7EA;
+}
+
+strong{
+  display: block;
+  margin-bottom: 2px;
+  padding-top: 10px;
 }
