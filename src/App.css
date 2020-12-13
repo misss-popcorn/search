@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+  color:  #404040;
+}
+.search-box {
+  margin: auto;
+  width: 50%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px;
+  margin-top: 20%;
+  position: relative;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: url(search-icon.svg) no-repeat;
+  background-position: 15px center;
+}
+
+.options{
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height:250px;
+  
+  overflow-y: auto;
+}
+.option-item {
+  font-size: 13px;
+  text-align: left;
+  padding-left: 18px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.option-item:focus {
+  font-size: 12px;
+  outline: none;
+  background-color: #FFFEDC;
+}
+
+.address{
+  color: #606060;
+}
+
+b{
+  color: #78A7EA;
+}
