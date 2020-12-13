@@ -20,34 +20,39 @@ const Autocomplete = ({handleOnChange, searchResults, inputValue}) => {
     };
 
     const handleKeyDown = (e) => {
-        if(e.keyCode === 40) {
-            if(e.target.type === "text") {
+        switch(e.keyCode) {
+            case 13:
+                handleOnChange({target: {value: searchResults[focus].name}});
+                inputRef.current.focus();
+                setFocus(null);
+                break;
+            case 27:
+                inputRef.current.focus();
+                setFocus(null);
+                break;
+            case 38:
+                if(focus === 0) {
+                    inputRef.current.focus();
+                    setFocus(null);
+                } else if(focus !== null) {
+                    setFocus(focus-1);
+                    itemsRef.current[focus-1].focus();
+                }
+                break;
+            case 40:
+                if(e.target.type === "text") {
                     itemsRef.current[0].focus();
                     setFocus(0);
-                
-            } else {
+                } else {
                 if(focus < searchResults.length-1) {
                     setFocus(focus+1);
                     itemsRef.current[focus+1].focus();
                 }
-                
             }
+                break;
+            default:
+                return
             
-        } else if(e.keyCode === 38) {
-            if(focus === 0) {
-                inputRef.current.focus();
-                setFocus(null);
-            } else if(focus !== null) {
-                setFocus(focus-1);
-                itemsRef.current[focus-1].focus();
-            }
-        } else if (e.keyCode === 27) {
-            inputRef.current.focus();
-            setFocus(null);
-        } else if (e.keyCode === 13) {
-            handleOnChange({target: {value: searchResults[focus].name}});
-            inputRef.current.focus();
-            setFocus(null);
         }
     }
 
