@@ -9,7 +9,7 @@ function App() {
   const search = (e) => {
     setValue(e.target.value);
     let results = [];
-    fetch('http://www.mocky.io/v2/5ba8efb23100007200c2750c')
+    fetch('https://www.mocky.io/v2/5ba8efb23100007200c2750c')
     .then(response => response.json())
     .then(data =>{
 
